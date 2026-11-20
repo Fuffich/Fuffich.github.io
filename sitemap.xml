@@ -3,16 +3,18 @@
 
   <url>
     <loc>https://fuffich.github.io/</loc>
-    <lastmod>2026-10-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://fuffich.github.io/favorites.html</loc>
-    <lastmod>2026-10-20</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://fuffich.github.io/faq.html</loc>
+  </url>
+
+  <url>
+    <loc>https://fuffich.github.io/privacy.html</loc>
+  </url>
+
+  <url>
+    <loc>https://fuffich.github.io/rules.html</loc>
   </url>
 
 </urlset>
