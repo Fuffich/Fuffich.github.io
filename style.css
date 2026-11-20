@@ -2,8 +2,18 @@
     box-sizing: border-box;
 }
 
+/* Атрибут hidden должен скрывать элемент независимо от его display. */
+[hidden] {
+    display: none !important;
+}
+
 html {
     scroll-behavior: smooth;
+}
+
+#about,
+#feedback {
+    scroll-margin-top: 85px;
 }
 
 body {
@@ -57,6 +67,33 @@ nav a {
 
 nav a:hover {
     color: #6d4fc2;
+}
+
+/* Состояния ссылок и клавиатурный фокус */
+a:visited {
+    color: #5f4b9d;
+}
+
+nav a:visited {
+    color: #554d68;
+}
+
+.footer-content a:visited {
+    color: white;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #8b72d6;
+    outline-offset: 3px;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
 }
 
 
@@ -333,6 +370,27 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .section-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .section-title .page-heading {
+        margin-bottom: 0;
+    }
+
+    .page-heading {
+        font-size: clamp(25px, 8vw, 30px);
+        overflow-wrap: anywhere;
+        hyphens: auto;
+    }
+
+    #about,
+    #feedback {
+        scroll-margin-top: 145px;
+    }
+
     .footer-content {
         flex-direction: column;
         justify-content: center;
@@ -482,6 +540,9 @@ footer {
 .page-heading {
     margin: 8px 0 25px;
     font-size: 36px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    hyphens: auto;
 }
 
 .faq-item {
@@ -540,4 +601,40 @@ footer {
         justify-content: center;
         gap: 10px 14px;
     }
+}
+
+
+/* СТРАНИЦА 404 */
+.error-page {
+    min-height: 65vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 70px 0;
+}
+
+.error-code {
+    margin: 0;
+    color: #7356c7;
+    font-size: clamp(88px, 18vw, 160px);
+    line-height: 1;
+}
+
+.error-page h1 {
+    margin: 14px 0;
+    font-size: clamp(27px, 6vw, 42px);
+}
+
+.error-page p {
+    max-width: 520px;
+    color: #696276;
+    line-height: 1.6;
+}
+
+.error-page .main-button {
+    display: inline-block;
+    margin-top: 16px;
+    text-decoration: none;
 }
