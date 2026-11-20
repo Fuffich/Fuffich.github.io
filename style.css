@@ -685,3 +685,42 @@ footer a:visited:not(.main-button):not(.logo):not([aria-current="page"]) {
 .error-page a.main-button:visited:hover {
     color: #ffffff;
 }
+
+
+/* Версия 4: запоминание посещённых ссылок и окончательная фиксация кнопки 404. */
+a.was-visited:not(.main-button):not(.logo):not([aria-current="page"]) {
+    color: #2563eb !important;
+}
+
+footer a.was-visited:not(.main-button):not(.logo):not([aria-current="page"]) {
+    color: #bfdbfe !important;
+}
+
+nav a[aria-current="page"] {
+    color: #6d4fc2 !important;
+    background: #eee9fb;
+    font-weight: 700;
+}
+
+.error-page .main-button,
+.error-page .main-button:link,
+.error-page .main-button:visited,
+.error-page .main-button:hover,
+.error-page .main-button:active {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background-color: #7356c7 !important;
+}
+
+.error-page .main-button:hover {
+    background-color: #6045b0 !important;
+}
+
+.contact-email {
+    margin-top: -8px;
+    color: #696276;
+}
+
+.contact-email a {
+    color: #2563eb;
+}
