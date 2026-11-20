@@ -63,10 +63,13 @@ nav {
 nav a {
     color: #554d68;
     text-decoration: none;
+    padding: 8px 10px;
+    border-radius: 8px;
 }
 
 nav a:hover {
     color: #6d4fc2;
+    background: #f5f2ff;
 }
 
 /* Состояния ссылок и клавиатурный фокус */
@@ -74,12 +77,28 @@ a:visited {
     color: #5f4b9d;
 }
 
+/* Посещённые пункты меню отличаются от ещё не открывавшихся. */
 nav a:visited {
-    color: #554d68;
+    color: #8068bc;
+}
+
+/* Текущий раздел выделяется независимо от состояния :visited. */
+nav a[aria-current="page"] {
+    color: #6d4fc2;
+    background: #eee9fb;
+    font-weight: 700;
 }
 
 .footer-content a:visited {
-    color: white;
+    color: #d4c7ff;
+}
+
+.footer-content a[aria-current="page"] {
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
 }
 
 a:focus-visible,
@@ -466,6 +485,13 @@ footer {
     color: #6d4fc2;
 }
 
+.text-links a:visited,
+.info-page a:visited,
+.content-section a:visited,
+.empty a:visited {
+    color: #8a70c5;
+}
+
 .feedback-form {
     max-width: 700px;
     display: grid;
@@ -638,100 +664,3 @@ footer {
     margin-top: 16px;
     text-decoration: none;
 }
-
-* {
-    box-sizing: border-box;
-}
-
-/* Атрибут hidden должен скрывать элемент независимо от его display. */
-[hidden] {
-    display: none !important;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-#about,
-#feedback {
-    scroll-margin-top: 85px;
-}
-
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f3ff;
-    color: #29243a;
-}
-
-.container {
-    width: min(1100px, 92%);
-    margin: 0 auto;
-}
-
-
-/* ШАПКА */
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: white;
-    border-bottom: 1px solid #e5e0f2;
-}
-
-.nav {
-    min-height: 65px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.logo {
-    color: #6d4fc2;
-    font-size: 22px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-nav {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-nav a {
-    color: #554d68;
-    text-decoration: none;
-    padding: 8px 10px;
-    border-radius: 8px;
-}
-
-nav a:hover {
-    color: #6d4fc2;
-    background: #f5f2ff;
-}
-
-/* Состояния ссылок и клавиатурный фокус */
-a:visited {
-    color: #5f4b9d;
-}
-
-/* Посещённые пункты меню отличаются от ещё не открывавшихся. */
-nav a:visited {
-    color: #8068bc;
-}
-
-/* Текущий раздел выделяется независимо от состояния :visited. */
-nav a[aria-current="page"] {
-    color: #6d4fc2;
-    background: #eee9fb;
-    font-weight: 700;
-}
-
-.footer-content a:visited {
-    color: #d4c7ff;
-}
-
-.footer-content a[aria-current="page"] {
