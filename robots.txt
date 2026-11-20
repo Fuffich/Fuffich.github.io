@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /favorites.html
 Sitemap: https://fuffich.github.io/sitemap.xml
