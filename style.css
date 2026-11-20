@@ -664,3 +664,24 @@ footer {
     margin-top: 16px;
     text-decoration: none;
 }
+
+
+/* Посещённые ссылки: синий цвет заметно отличается от обычного фиолетового.
+   Логотип и текущий пункт меню сохраняют свои специальные цвета. */
+a:visited:not(.main-button):not(.logo):not([aria-current="page"]) {
+    color: #2563eb;
+}
+
+/* На тёмном фоне футера используем светлый синий для контраста. */
+footer a:visited:not(.main-button):not(.logo):not([aria-current="page"]) {
+    color: #bfdbfe;
+}
+
+/* Ссылка-кнопка на 404 всегда сохраняет белый текст,
+   в том числе после посещения. */
+.error-page a.main-button,
+.error-page a.main-button:visited,
+.error-page a.main-button:hover,
+.error-page a.main-button:visited:hover {
+    color: #ffffff;
+}
