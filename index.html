@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Что-нибудь — случайная рулетка фактов, фильмов, цитат и мест</title>
     <meta name="description" content="«Что-нибудь» — сервис случайного выбора контента. Выбери факты, фильмы, цитаты или места, нажми кнопку и найди новую идею или неожиданный результат.">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=4">
     <link rel="canonical" href="https://fuffich.github.io/">
 </head>
 <body>
@@ -124,6 +124,7 @@
         <p>
             Предложи интересный факт, фильм, цитату или место либо сообщи об ошибке в карточке.
         </p>
+        <p class="contact-email">Можно также написать напрямую: <a href="mailto:fuffyb@mail.ru">fuffyb@mail.ru</a>.</p>
 
         <form id="feedbackForm" class="feedback-form">
             <label for="feedbackTopic">Тип сообщения</label>
@@ -161,7 +162,7 @@
             <a href="faq.html">FAQ</a>
             <a href="privacy.html">Конфиденциальность</a>
             <a href="rules.html">Правила</a>
-            <a href="mailto:fuffyb@mail.ru">Контакты</a>
+            <a href="index.html#feedback">Контакты</a>
         </div>
     </div>
 </footer>
@@ -193,5 +194,6 @@
         window.addEventListener('hashchange', updateCurrentNavigation);
     })();
 </script>
+<script src="link-state.js?v=4"></script>
 </body>
 </html>
