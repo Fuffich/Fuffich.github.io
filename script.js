@@ -305,8 +305,10 @@ function getFavorites() {
 function saveFavorites(favorites) {
     try {
         localStorage.setItem("favorites", JSON.stringify(favorites));
+        return true;
     } catch (error) {
         alert("Не удалось сохранить избранное. Проверьте настройки хранения данных браузера.");
+        return false;
     }
 }
 
@@ -442,16 +444,12 @@ function updateSaveButton() {
         );
 
 
+    button.setAttribute("aria-pressed", String(exists));
+
     if (exists) {
-
-        button.textContent =
-            "✓ В избранном";
-
+        button.textContent = "✓ В избранном";
     } else {
-
-        button.textContent =
-            "♡ В избранное";
-
+        button.textContent = "♡ В избранное";
     }
 
 }
@@ -460,29 +458,22 @@ function updateSaveButton() {
 /* СОХРАНЕНИЕ */
 
 function addFavorite() {
+    if (!currentCard) return;
 
-    if (!currentCard) {
+    const favorites = getFavorites();
+    const alreadySaved = favorites.some(card => card.id === currentCard.id);
+
+    if (alreadySaved) {
+        updateSaveButton();
         return;
     }
 
+    favorites.push(currentCard);
 
-    const favorites =
-        getFavorites();
-
-
-    if (!favorites.some(
-        card => card.id === currentCard.id
-    )) {
-
-        favorites.push(currentCard);
-
-        saveFavorites(favorites);
-
+    // Меняем состояние кнопки только после успешной записи в localStorage.
+    if (saveFavorites(favorites)) {
+        updateSaveButton();
     }
-
-
-    updateSaveButton();
-
 }
 
 
@@ -500,9 +491,9 @@ function removeFavorite(id) {
         );
 
 
-    saveFavorites(favorites);
-
-    renderFavorites();
+    if (saveFavorites(favorites)) {
+        renderFavorites();
+    }
 
 }
 
@@ -531,6 +522,10 @@ function renderFavorites() {
     const favorites =
         getFavorites();
 
+    const clearButton = document.getElementById("clearFavorites");
+    if (clearButton) {
+        clearButton.disabled = favorites.length === 0;
+    }
 
     if (favorites.length === 0) {
 
@@ -623,20 +618,17 @@ const clearButton =
 
 
 if (clearButton) {
+    clearButton.addEventListener("click", () => {
+        const favorites = getFavorites();
+        if (favorites.length === 0) return;
 
-    clearButton.addEventListener(
-        "click",
-        () => {
+        const confirmed = window.confirm("Удалить все сохранённые карточки?");
+        if (!confirmed) return;
 
-            localStorage.removeItem(
-                "favorites"
-            );
-
+        if (saveFavorites([])) {
             renderFavorites();
-
         }
-    );
-
+    });
 }
 
 
