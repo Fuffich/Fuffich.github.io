@@ -40,7 +40,7 @@
 
         <button id="randomBtn" class="main-button">Покажи что-нибудь</button>
 
-        <div id="rouletteCard" class="card placeholder">
+        <div id="rouletteCard" class="card placeholder" aria-live="polite" aria-atomic="true">
             <div>
                 <span class="card-type">Рулетка</span>
                 <h2>Здесь появится случайная карточка</h2>
@@ -50,7 +50,7 @@
 
         <div id="cardActions" class="actions" hidden>
             <button id="nextBtn">Ещё</button>
-            <button id="saveBtn">♡ В избранное</button>
+            <button id="saveBtn" aria-pressed="false">♡ В избранное</button>
             <button id="shareBtn">Поделиться</button>
         </div>
 
@@ -123,6 +123,7 @@
         <h2>Обратная связь</h2>
         <p>
             Предложи интересный факт, фильм, цитату или место либо сообщи об ошибке в карточке.
+            Сообщение будет подготовлено в почтовом приложении.
         </p>
 
         <form id="feedbackForm" class="feedback-form">
@@ -149,7 +150,7 @@
             <textarea id="feedbackMessage" name="message" rows="5"
                       placeholder="Напиши предложение или опиши ошибку..." required></textarea>
 
-            <button class="main-button" type="submit">Отправить</button>
+            <button class="main-button" type="submit">Подготовить письмо</button>
         </form>
     </section>
 </main>
