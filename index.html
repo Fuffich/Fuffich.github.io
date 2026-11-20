@@ -13,7 +13,7 @@
     <div class="container nav">
         <a class="logo" href="index.html">Что-нибудь</a>
         <nav aria-label="Основная навигация">
-            <a href="index.html">Рулетка</a>
+            <a href="index.html" aria-current="page">Рулетка</a>
             <a href="index.html#about">О проекте</a>
             <a href="faq.html">FAQ</a>
             <a href="favorites.html">Избранное</a>
@@ -123,7 +123,6 @@
         <h2>Обратная связь</h2>
         <p>
             Предложи интересный факт, фильм, цитату или место либо сообщи об ошибке в карточке.
-            Сообщение будет подготовлено в почтовом приложении.
         </p>
 
         <form id="feedbackForm" class="feedback-form">
@@ -150,7 +149,7 @@
             <textarea id="feedbackMessage" name="message" rows="5"
                       placeholder="Напиши предложение или опиши ошибку..." required></textarea>
 
-            <button class="main-button" type="submit">Подготовить письмо</button>
+            <button class="main-button" type="submit">Подготовить</button>
         </form>
     </section>
 </main>
@@ -168,5 +167,31 @@
 </footer>
 
 <script src="script.js"></script>
+<script>
+    // Подсвечиваем «О проекте», когда пользователь перешёл к этому разделу.
+    (() => {
+        const navLinks = document.querySelectorAll('header nav a');
+
+        function updateCurrentNavigation() {
+            const aboutIsActive = window.location.hash === '#about';
+
+            navLinks.forEach((link) => {
+                const href = link.getAttribute('href');
+                const isAboutLink = href === 'index.html#about';
+                const isRouletteLink = href === 'index.html';
+                const shouldBeCurrent = aboutIsActive ? isAboutLink : isRouletteLink;
+
+                if (shouldBeCurrent) {
+                    link.setAttribute('aria-current', 'page');
+                } else {
+                    link.removeAttribute('aria-current');
+                }
+            });
+        }
+
+        updateCurrentNavigation();
+        window.addEventListener('hashchange', updateCurrentNavigation);
+    })();
+</script>
 </body>
 </html>
