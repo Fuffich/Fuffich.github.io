@@ -472,7 +472,8 @@ function addFavorite() {
 
     // Меняем состояние кнопки только после успешной записи в localStorage.
     if (saveFavorites(favorites)) {
-        updateSaveButton();
+    updateSaveButton();
+    ym(114435342, 'reachGoal', 'add_favorite');
     }
 }
 
@@ -565,14 +566,36 @@ const randomButton =
 
 if (randomButton) {
 
-    randomButton.addEventListener(
-        "click",
-        showRandomCard
-    );
+    randomButton.addEventListener("click", () => {
+    showRandomCard();
+    if (document.querySelector(".filters input:checked")) {
+        ym(114435342, 'reachGoal', 'show_content');
+    }
+});
 
 }
 
+/* ОТСЛЕЖИВАНИЕ ВЫБОРА КАТЕГОРИЙ */
 
+const categoryGoals = {
+    fact: 'category_facts',
+    movie: 'category_films',
+    quote: 'category_quotes',
+    place: 'category_places'
+};
+
+document.querySelectorAll('#categories input[type="checkbox"]').forEach(input => {
+    input.addEventListener('change', () => {
+        // Учитываем только выбор категории, а не снятие галочки.
+        if (!input.checked) return;
+
+        const goal = categoryGoals[input.value];
+
+        if (goal) {
+            ym(114435342, 'reachGoal', goal);
+        }
+    });
+});
 /* ЕЩЁ */
 
 const nextButton =
@@ -745,7 +768,7 @@ if (feedbackForm) {
         const body = encodeURIComponent(
             `Тип сообщения: ${topic}\nКатегория: ${category}\nE-mail для ответа: ${email}\n\nСообщение:\n${message}`
         );
-
+        ym(114435342, 'reachGoal', 'form_submit');
         window.location.href = `mailto:fuffyb@mail.ru?subject=${subject}&body=${body}`;
     });
 }
